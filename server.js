@@ -70,6 +70,7 @@ res.status(200).json(resp)
 }
 catch(error){
     console.log(error) 
+    //This is an error
 }
 })
 
