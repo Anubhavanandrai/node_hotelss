@@ -1,16 +1,22 @@
-import mongoose from "mongoose"
+// import { configDotenv } from "dotenv";
+import mongoose from "mongoose";
+import dotenv from 'dotenv';
 
-const URL="mongodb://localhost:27017/hotel"
+dotenv.config();
 
-const dbconnect = mongoose.connect(URL,
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true, 
-    }).then(()=>{
-        console.log("connected")
-    }).catch((error) => {
-        console.error("Error connecting to MongoDB:", error);
-      });
-    
-      export default dbconnect; 
-      
+const URL = process.env.MONGO_URL;
+  
+
+const dbconnect = mongoose
+  .connect(URL, {
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("connected");
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  });
+
+export default dbconnect;
